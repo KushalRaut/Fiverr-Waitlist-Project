@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Our Waitlist</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a class="navbar-brand" href="./index.html"
+            ><img src="img/logo.png" alt="chnl logo" class="me-2" />CHNL</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="form-container">
+        <div class="left-container">
+          <h1>Join Our Wishlist</h1>
+          <p>Sign up for our waitlist to get ahead of the curve.</p>
+          <div class="t-signup"></div>
+        </div>
+        <div class="right-container">
+          <img src="./img/Signup.png" alt="no-img" class="form-img" />
+
+          <!-- Change the button links here -->
+          <button class="link-btn" style="background-color: #2ecc40">
+            <a class="links" href="https://www.youtube.com" target="blank"
+              >Donate $1 = 1 Point On The Waitlist</a
+            >
+          </button>
+          <button class="link-btn" style="background-color: #ff851b">
+            <a class="links" href="https://www.youtube.com" target="blank"
+              >Donate Using Crypto</a
+            >
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <div class="social-icons">
+        <i class="fa fa-brands fa-twitter"></i>
+        <i class="fa fa-solid fa-envelope"></i>
+      </div>
+      <div class="links">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </footer>
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Start of Tuemilio Code -->
+
+    <script>
+      (function (t, u, e, m, i, l, io) {
+        t['TuemilioObject'] = m;
+        t[m] =
+          t[m] ||
+          function () {
+            (t[m].q = t[m].q || []).push(arguments);
+          };
+        t[m].id = 'b378a3e1-f834-400f-ba89-fea129c53da8';
+        (l = u.createElement(e)), (io = u.getElementsByTagName(e)[0]);
+        l.id = m;
+        l.src = i;
+        l.async = 1;
+        io.parentNode.insertBefore(l, io);
+      })(
+        window,
+        document,
+        'script',
+        'Tuemilio',
+        'https://tuemilio.com/assets/js/modal/4.0/tuemilio-modal.js'
+      );
+      Tuemilio('init', {
+        form: {
+          style: {
+            inline: false,
+          },
+          input: {
+            texts: {
+              placeholder: 'name@email.com',
+            },
+          },
+          button: {
+            texts: {
+              CTA: 'Request early access',
+              loading: 'Loading',
+              checkDashboard: 'Dashboard',
+              login: 'Login',
+            },
+          },
+          feedback: {
+            texts: {
+              empty: "Don't forget your email!",
+              invalidEmail: 'Wrong email!',
+              unaccepted: 'We do not accept that email',
+              unauthorized: 'You did not subscribe with that email',
+            },
+          },
+        },
+      });
+      Tuemilio('sendVisit');
+    </script>
+    <style>
+      .t-button {
+        color: white;
+        background-color: #00b0ff;
+      }
+      .t-primary-color {
+        color: white;
+        background-color: #0069ff;
+        fill: white;
+      }
+      .t-input-color {
+        color: black;
+        background-color: #ffff;
+      }
+      .t-form {
+        max-width: 320px;
+      }
+    </style>
+    <!-- End of Tuemilio Code -->
+
+    <!-- vertexShader -->
+    <script id="js-vertex-shader" type="x-shader/x-vertex">
+      attribute vec3 position;
+
+      void main()	{
+        gl_Position = vec4(position, 1.0);
+      }
+    </script>
+
+    <!-- fragmentShader -->
+    <script id="js-fragment-shader" type="x-shader/x-fragment">
+      precision highp float;
+      uniform vec2 resolution;
+      uniform float time;
+      uniform float xScale;
+      uniform float yScale;
+      uniform float distortion;
+
+      void main() {
+        vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+
+        float d = length(p) * distortion;
+
+        float rx = p.x * (1.0 + d);
+        float gx = p.x;
+        float bx = p.x * (1.0 - d);
+
+        float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale);
+        float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);
+        float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);
+
+        gl_FragColor = vec4(r, g, b, 1.0);
+      }
+    </script>
+    <script src="./scripts.js"></script>
+    <script src="https://use.fontawesome.com/917e2d7124.js"></script>
+  </body>
+</html>
