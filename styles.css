@@ -50,6 +50,11 @@ body {
   margin: 1rem 0;
 }
 
+.dono-text{
+  font-size: 0.7rem;
+  margin:0.2rem 0;
+}
+
 .link-btn {
   width: 65%;
   height: auto;
@@ -240,20 +245,24 @@ nav {
 
   .form-container {
     width: 80%;
-    padding: 0.9rem;
+    padding: 0.5rem;
   }
 
   .form-container h1 {
-    font-size: 2em;
-    line-height: 2rem;
+    font-size: 1.7em;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 5px;
   }
 
   .form-container p {
     font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 5px;
   }
   .left-container {
     width: 100%;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
   .right-container {
     width: 100%;
@@ -282,6 +291,11 @@ nav {
   .form-container p {
     font-size: 1em;
   }
+
+  .dono-text{
+    font-size: 0.6rem;
+    margin: 0.3rem 0;
+  }
 }
 
 @media only screen and (max-width: 575px) {
@@ -306,6 +320,7 @@ nav {
 @media only screen and (max-width: 320px) {
   .container {
     right: -4%;
+    top: 16%;
   }
   .link-btn {
     padding: 0.4rem 0;
